@@ -1,0 +1,21 @@
+---
+interface Props {
+	num: string;
+	title: string;
+}
+
+const { num, title } = Astro.props;
+---
+
+<section class="mb-9 last:mb-0">
+	<div class="flex items-baseline gap-3.5 mb-[22px] break-after-avoid">
+		<span class="font-mono text-[13px] tracking-[0.04em] text-ink-mute">{num}</span>
+		<h2
+			class="font-mono text-[13px] font-medium uppercase tracking-[0.14em] text-ink m-0 whitespace-nowrap"
+		>
+			{title}
+		</h2>
+		<span class="flex-1 border-b border-rule h-0"></span>
+	</div>
+	<slot />
+</section>

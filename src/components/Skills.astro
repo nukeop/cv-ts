@@ -1,0 +1,31 @@
+---
+import type { SkillGroup } from "../data/cv.schema";
+
+interface Props {
+	rows: SkillGroup[];
+}
+
+const { rows } = Astro.props;
+---
+
+<div class="flex flex-col gap-3.5">
+	{
+		rows.map((r) => (
+			<div class="grid grid-cols-[110px_1fr] gap-6 items-baseline break-inside-avoid">
+				<div class="font-mono text-[12.5px] text-ink-mute lowercase tracking-[0.02em]">{r.cat}</div>
+				<div class="text-ink text-[14.5px] leading-[1.55] text-pretty">
+					{r.items.map((it, i) => (
+						<>
+							{i > 0 && (
+								<span class="text-ink-mute mx-2 font-mono opacity-50" aria-hidden="true">
+									/
+								</span>
+							)}
+							<span>{it}</span>
+						</>
+					))}
+				</div>
+			</div>
+		))
+	}
+</div>

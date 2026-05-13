@@ -1,20 +1,53 @@
 ---
-import "../styles/global.css";
+import Certifications from "../components/Certifications.astro";
+import Education from "../components/Education.astro";
+import Experience from "../components/Experience.astro";
+import Header from "../components/Header.astro";
+import Projects from "../components/Projects.astro";
+import Publications from "../components/Publications.astro";
+import Section from "../components/Section.astro";
+import Skills from "../components/Skills.astro";
+import Summary from "../components/Summary.astro";
+import { cv } from "../data/cv";
+import CV from "../layouts/CV.astro";
+
+const pageTitle = `Curriculum Vitae — ${cv.name.first} ${cv.name.last}`;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>CV</title>
-	</head>
-	<body class="bg-neutral-50 text-neutral-900">
-		<main class="mx-auto max-w-3xl px-6 py-12">
-			<h1 class="text-3xl font-semibold tracking-tight">CV template ready</h1>
-			<p class="mt-2 text-neutral-600">Astro + Tailwind + Biome + Bun.</p>
-		</main>
-	</body>
-</html>
+<CV title={pageTitle}>
+	<div class="cv-page-wrap min-h-screen px-6 py-8 pb-24 flex justify-center">
+		<article
+			class="cv-page w-full max-w-[820px] bg-paper px-[72px] py-16 border-[0.5px] border-rule-soft rounded-[2px]"
+		>
+			<Header data={cv} />
+
+			<Section num="01" title="Summary">
+				<Summary text={cv.summary} />
+			</Section>
+
+			<Section num="02" title="Experience">
+				<Experience jobs={cv.experience} />
+			</Section>
+
+			<Section num="03" title="Education">
+				<Education entries={cv.education} />
+			</Section>
+
+			<Section num="04" title="Projects">
+				<Projects items={cv.projects} />
+			</Section>
+
+			<Section num="05" title="Skills">
+				<Skills rows={cv.skills} />
+			</Section>
+
+			<Section num="06" title="Certifications">
+				<Certifications items={cv.certifications} />
+			</Section>
+
+			<Section num="07" title="Publications">
+				<Publications items={cv.publications} />
+			</Section>
+		</article>
+	</div>
+</CV>

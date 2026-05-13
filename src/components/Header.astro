@@ -1,0 +1,52 @@
+---
+import type { CvData } from "../data/cv.schema";
+
+interface Props {
+	data: CvData;
+}
+
+const { data } = Astro.props;
+const { first, last } = data.name;
+---
+
+<header class="mb-11 break-inside-avoid break-after-avoid">
+	<h1
+		class="font-display font-normal text-[clamp(54px,7.2vw,76px)] leading-[0.95] tracking-[-0.02em] m-0 mb-1 text-ink"
+	>
+		{first} <em class="italic text-accent">{last}</em>
+	</h1>
+	<p class="font-sans font-normal text-[17px] tracking-[0.005em] text-ink-soft mt-2 mb-6">
+		{data.title}
+	</p>
+	<address
+		class="flex flex-wrap items-center gap-x-[22px] gap-y-1 font-mono text-[12.5px] text-ink-soft pt-[18px] border-t border-rule not-italic"
+	>
+		{
+			data.contact.map((c, i) => (
+				<>
+					{i > 0 && (
+						<span
+							class="inline-block w-[3px] h-[3px] bg-ink-mute rounded-full opacity-50"
+							aria-hidden="true"
+						/>
+					)}
+					<span>
+						<span class="text-ink-mute mr-1.5 lowercase">{c.label}</span>
+						{c.href ? (
+							<a
+								href={c.href}
+								target={c.href.startsWith("mailto:") ? undefined : "_blank"}
+								rel="noreferrer"
+								class="border-b-[0.5px] border-transparent hover:border-accent hover:text-accent transition-colors"
+							>
+								{c.text}
+							</a>
+						) : (
+							<span>{c.text}</span>
+						)}
+					</span>
+				</>
+			))
+		}
+	</address>
+</header>

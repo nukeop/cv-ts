@@ -16,9 +16,12 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.1.0",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.2.4",
+    "yaml": "^2.8.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.14"
+    "@astrojs/check": "^0.9.9",
+    "@biomejs/biome": "^2.4.14",
+    "typescript": "^6.0.3"
   }
 }

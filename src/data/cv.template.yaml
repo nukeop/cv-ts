@@ -1,0 +1,62 @@
+name:
+  first: ""
+  last: ""
+
+title: ""
+
+contact:
+  - label: email
+    text: ""
+    href: ""
+  - label: github
+    text: ""
+    href: ""
+  - label: site
+    text: ""
+    href: ""
+  - label: based
+    text: ""
+
+summary: ""
+
+experience:
+  - company: ""
+    role: ""
+    url: ""
+    start: ""
+    end: ""
+    mark: ""
+    description: ""
+    highlights:
+      - ""
+
+education:
+  - start: ""
+    end: ""
+    degree: ""
+    uni: ""
+    note: ""
+
+projects:
+  - name: ""
+    tagline: ""
+    url: ""
+    description: ""
+    tech:
+      - ""
+
+skills:
+  - cat: ""
+    items:
+      - ""
+
+certifications:
+  - name: ""
+    issuer: ""
+    year: ""
+
+publications:
+  - authors: ""
+    title: ""
+    venue: ""
+    year: ""
