@@ -1,52 +1,87 @@
 ---
+import { Icon } from "astro-icon/components";
 import type { CvData } from "../data/cv.schema";
 
 interface Props {
-	data: CvData;
+  data: CvData;
 }
 
 const { data } = Astro.props;
 const { first, last } = data.name;
+
+const contactIcons: Record<string, string> = {
+  email: "lucide:mail",
+  github: "lucide:github",
+  site: "lucide:globe",
+  web: "lucide:globe",
+  based: "lucide:map-pin",
+  location: "lucide:map-pin",
+  phone: "lucide:phone",
+  linkedin: "lucide:linkedin",
+};
+
+// Map contact labels to schema.org itemprop names
+const contactItemprop: Record<string, string> = {
+  email: "email",
+  site: "url",
+  web: "url",
+  github: "url",
+  linkedin: "url",
+  phone: "telephone",
+};
 ---
 
 <header class="mb-11 break-inside-avoid break-after-avoid">
-	<h1
-		class="font-display font-normal text-[clamp(54px,7.2vw,76px)] leading-[0.95] tracking-[-0.02em] m-0 mb-1 text-ink"
-	>
-		{first} <em class="italic text-accent">{last}</em>
-	</h1>
-	<p class="font-sans font-normal text-[17px] tracking-[0.005em] text-ink-soft mt-2 mb-6">
-		{data.title}
-	</p>
-	<address
-		class="flex flex-wrap items-center gap-x-[22px] gap-y-1 font-mono text-[12.5px] text-ink-soft pt-[18px] border-t border-rule not-italic"
-	>
-		{
-			data.contact.map((c, i) => (
-				<>
-					{i > 0 && (
-						<span
-							class="inline-block w-[3px] h-[3px] bg-ink-mute rounded-full opacity-50"
-							aria-hidden="true"
-						/>
-					)}
-					<span>
-						<span class="text-ink-mute mr-1.5 lowercase">{c.label}</span>
-						{c.href ? (
-							<a
-								href={c.href}
-								target={c.href.startsWith("mailto:") ? undefined : "_blank"}
-								rel="noreferrer"
-								class="border-b-[0.5px] border-transparent hover:border-accent hover:text-accent transition-colors"
-							>
-								{c.text}
-							</a>
-						) : (
-							<span>{c.text}</span>
-						)}
-					</span>
-				</>
-			))
-		}
-	</address>
+  <h1
+    class="font-display font-normal text-[clamp(54px,7.2vw,76px)] leading-[0.95] tracking-[-0.02em] m-0 mb-1 text-ink"
+    itemprop="name"
+  >
+    <span itemprop="givenName">{first}</span>{" "}<em class="italic text-accent" itemprop="familyName">{last}</em>
+  </h1>
+  <p
+    class="font-sans font-normal text-[17px] tracking-[0.005em] text-ink-soft mt-2 mb-6"
+    itemprop="jobTitle"
+  >
+    {data.title}
+  </p>
+  <address
+    class="flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-[12.5px] text-ink-soft pt-[18px] border-t border-rule not-italic"
+  >
+    {
+      data.contact.map((c, i) => {
+        const iconName = contactIcons[c.label.toLowerCase()];
+        const itemprop = contactItemprop[c.label.toLowerCase()];
+        return (
+          <>
+            {i > 0 && (
+              <span
+                class="inline-block w-[3px] h-[3px] bg-ink-mute rounded-full opacity-50"
+                aria-hidden="true"
+              />
+            )}
+            <span class="inline-flex items-center gap-1.5">
+              {iconName ? (
+                <Icon name={iconName} class="w-[14px] h-[14px] text-ink-mute shrink-0" />
+              ) : (
+                <span class="text-ink-mute lowercase">{c.label}</span>
+              )}
+              {c.href ? (
+                <a
+                  href={c.href}
+                  target={c.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel="noreferrer"
+                  class="border-b-[0.5px] border-transparent hover:border-accent hover:text-accent transition-colors"
+                  itemprop={itemprop}
+                >
+                  {c.text}
+                </a>
+              ) : (
+                <span>{c.text}</span>
+              )}
+            </span>
+          </>
+        );
+      })
+    }
+  </address>
 </header>

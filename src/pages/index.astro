@@ -14,40 +14,42 @@ import CV from "../layouts/CV.astro";
 const pageTitle = `Curriculum Vitae — ${cv.name.first} ${cv.name.last}`;
 ---
 
-<CV title={pageTitle}>
-	<div class="cv-page-wrap min-h-screen px-6 py-8 pb-24 flex justify-center">
-		<article
-			class="cv-page w-full max-w-[820px] bg-paper px-[72px] py-16 border-[0.5px] border-rule-soft rounded-[2px]"
-		>
-			<Header data={cv} />
+<CV title={pageTitle} cv={cv}>
+  <div class="min-h-screen px-6 py-8 pb-24 flex justify-center print:p-0 print:min-h-0">
+    <article
+      class="w-full max-w-[820px] bg-paper px-[72px] py-16 border-[0.5px] border-rule-soft rounded-[2px] shadow-page print:shadow-none print:border-0 print:rounded-none print:max-w-none print:w-full print:p-0"
+      itemscope
+      itemtype="https://schema.org/Person"
+    >
+      <Header data={cv} />
 
-			<Section num="01" title="Summary">
-				<Summary text={cv.summary} />
-			</Section>
+      <Section num="01" title="Summary">
+        <Summary text={cv.summary} />
+      </Section>
 
-			<Section num="02" title="Experience">
-				<Experience jobs={cv.experience} />
-			</Section>
+      <Section num="02" title="Experience">
+        <Experience jobs={cv.experience} />
+      </Section>
 
-			<Section num="03" title="Education">
-				<Education entries={cv.education} />
-			</Section>
+      <Section num="03" title="Education">
+        <Education entries={cv.education} />
+      </Section>
 
-			<Section num="04" title="Projects">
-				<Projects items={cv.projects} />
-			</Section>
+      <Section num="04" title="Projects">
+        <Projects items={cv.projects} />
+      </Section>
 
-			<Section num="05" title="Skills">
-				<Skills rows={cv.skills} />
-			</Section>
+      <Section num="05" title="Skills">
+        <Skills rows={cv.skills} />
+      </Section>
 
-			<Section num="06" title="Certifications">
-				<Certifications items={cv.certifications} />
-			</Section>
+      <Section num="06" title="Certifications">
+        <Certifications items={cv.certifications} />
+      </Section>
 
-			<Section num="07" title="Publications">
-				<Publications items={cv.publications} />
-			</Section>
-		</article>
-	</div>
+      <Section num="07" title="Publications">
+        <Publications items={cv.publications} />
+      </Section>
+    </article>
+  </div>
 </CV>

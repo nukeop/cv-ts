@@ -2,29 +2,36 @@
 import type { Education } from "../data/cv.schema";
 
 interface Props {
-	entries: Education[];
+  entries: Education[];
 }
 
 const { entries } = Astro.props;
 ---
 
-<div class="flex flex-col gap-[18px]">
-	{
-		entries.map((e) => (
-			<article class="grid grid-cols-[110px_1fr] gap-6 break-inside-avoid">
-				<div class="font-mono text-[12.5px] text-ink-mute pt-0.5">
-					{e.start} — {e.end}
-				</div>
-				<div>
-					<h3 class="font-sans text-[17px] font-semibold text-ink m-0 mb-0.5 leading-[1.25]">
-						{e.degree}
-					</h3>
-					<div class="text-[12.5px] text-ink-soft">{e.uni}</div>
-					{e.note && (
-						<p class="mt-2 text-ink-soft max-w-[62ch] text-pretty text-[14.5px]">{e.note}</p>
-					)}
-				</div>
-			</article>
-		))
-	}
+<div class="flex flex-col gap-[18px] break-inside-avoid">
+  {
+    entries.map((e) => (
+      <article
+        class="grid grid-cols-[110px_1fr] gap-6 break-inside-avoid"
+        itemprop="alumniOf"
+        itemscope
+        itemtype="https://schema.org/EducationalOrganization"
+      >
+        <div class="font-mono text-[12.5px] text-ink-mute pt-0.5">
+          <time datetime={e.start}>{e.start}</time>
+          {" — "}
+          <time datetime={e.end}>{e.end}</time>
+        </div>
+        <div>
+          <h3 class="font-sans text-[17px] font-semibold text-ink m-0 mb-0.5 leading-[1.25]" itemprop="description">
+            {e.degree}
+          </h3>
+          <div class="text-[12.5px] text-ink-soft" itemprop="name">{e.uni}</div>
+          {e.note && (
+            <p class="mt-2 text-ink-soft max-w-[62ch] text-pretty text-[14.5px]">{e.note}</p>
+          )}
+        </div>
+      </article>
+    ))
+  }
 </div>

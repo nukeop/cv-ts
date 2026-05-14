@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!dist", "!.astro", "!.design", "!node_modules", "!**/*.astro"]
+    "includes": ["**", "!dist", "!.astro", "!.design", "!node_modules"]
   },
   "formatter": {
     "enabled": true,
@@ -33,5 +33,18 @@
     "formatter": {
       "enabled": true
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
+          }
+        }
+      }
+    }
+  ]
 }
