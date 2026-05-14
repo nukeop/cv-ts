@@ -9,46 +9,50 @@ const { items } = Astro.props;
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-	{
-		items.map((p) => (
-			<article class="p-[18px] border-[0.5px] border-rule rounded-md bg-paper/60 flex flex-col gap-2 break-inside-avoid">
-				<div class="flex items-baseline justify-between gap-2">
-					<h3 class="font-mono text-[14.5px] font-medium text-ink m-0 tracking-[-0.005em]">
-						{p.url ? (
-							<a
-								href={p.url}
-								target="_blank"
-								rel="noreferrer"
-								class="hover:text-accent transition-colors"
-							>
-								{p.name}
-							</a>
-						) : (
-							p.name
-						)}
-					</h3>
-					{p.url && (
-						<span class="font-mono text-[11px] text-ink-mute whitespace-nowrap before:content-['↗_']">
-							{p.url.replace(/^https?:\/\//, "")}
-						</span>
-					)}
-				</div>
-				{p.tagline && (
-					<p class="font-display text-[17px] leading-[1.3] text-ink italic -mt-0.5 m-0">
-						{p.tagline}
-					</p>
-				)}
-				{p.description && <p class="text-[14px] text-ink-soft m-0 text-pretty">{p.description}</p>}
-				{p.tech && p.tech.length > 0 && (
-					<div class="flex flex-wrap gap-x-1.5 gap-y-1 mt-1">
-						{p.tech.map((t) => (
-							<span class="font-mono text-[11px] tracking-[0.01em] text-ink-soft bg-ink/[0.04] px-[7px] py-0.5 rounded-sm whitespace-nowrap">
-								{t}
-							</span>
-						))}
-					</div>
-				)}
-			</article>
-		))
-	}
+  {
+    items.map((p) => {
+      const Tag = p.url ? "a" : "div";
+      const linkProps = p.url
+        ? { href: p.url, target: "_blank", rel: "noreferrer" }
+        : {};
+
+      return (
+        <Tag
+          {...linkProps}
+          class:list={[
+            "p-[18px] border border-rule rounded-none bg-paper flex flex-col gap-2 break-inside-avoid no-underline text-inherit transition-colors",
+            p.url && "hover:border-accent hover:bg-accent-soft/30 cursor-pointer",
+          ]}
+        >
+          <div class="flex items-baseline justify-between gap-2">
+            <h3 class="font-display text-[14px] font-bold text-ink m-0 tracking-[0.02em] uppercase">
+              {p.name}
+            </h3>
+            {p.url && (
+              <span class="font-display text-[10px] text-ink-mute whitespace-nowrap before:content-['↗_']">
+                {p.url.replace(/^https?:\/\//, "")}
+              </span>
+            )}
+          </div>
+          {p.tagline && (
+            <p class="font-sans text-[15px] leading-[1.4] text-ink-soft -mt-0.5 m-0">
+              {p.tagline}
+            </p>
+          )}
+          {p.description && (
+            <p class="text-[14px] text-ink-soft m-0 text-pretty">{p.description}</p>
+          )}
+          {p.tech && p.tech.length > 0 && (
+            <div class="flex flex-wrap gap-x-1.5 gap-y-1 mt-1">
+              {p.tech.map((t) => (
+                <span class="font-display text-[10px] tracking-[0.04em] text-accent border border-accent/40 px-[6px] py-0.5 whitespace-nowrap">
+                  {t}
+                </span>
+              ))}
+            </div>
+          )}
+        </Tag>
+      );
+    })
+  }
 </div>

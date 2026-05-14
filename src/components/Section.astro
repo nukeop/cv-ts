@@ -2,20 +2,28 @@
 interface Props {
   num: string;
   title: string;
+  annotation?: string;
 }
 
-const { num, title } = Astro.props;
+const { num, title, annotation } = Astro.props;
 ---
 
 <section class="mb-9 last:mb-0">
-	<div class="flex items-baseline gap-3.5 mb-[22px] break-after-avoid">
-		<span class="font-mono text-[13px] tracking-[0.04em] text-ink-mute">{num}</span>
-		<h2
-			class="font-mono text-[13px] font-medium uppercase tracking-[0.14em] text-ink m-0 whitespace-nowrap"
-		>
-			{title}
-		</h2>
-		<span class="flex-1 border-b border-rule h-0"></span>
-	</div>
-	<slot />
+  <div class="flex items-center gap-3 mb-[22px] break-after-avoid">
+    <span class="font-display text-[11px] font-bold tracking-[0.08em] text-accent bg-accent-soft px-[6px] py-[3px] leading-none">
+      {num}
+    </span>
+    <h2
+      class="font-display text-[12px] font-bold uppercase tracking-[0.16em] text-ink m-0 whitespace-nowrap"
+    >
+      {title}
+    </h2>
+    <span class="flex-1 border-b-2 border-rule h-0"></span>
+    {annotation && (
+      <span class="font-display text-[11px] text-ink-mute tracking-[0.04em] whitespace-nowrap">
+        {annotation}
+      </span>
+    )}
+  </div>
+  <slot />
 </section>

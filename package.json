@@ -14,9 +14,8 @@
     "ci": "biome ci ."
   },
   "dependencies": {
-    "@fontsource-variable/jetbrains-mono": "^5.2.8",
-    "@fontsource-variable/manrope": "^5.2.8",
-    "@fontsource/instrument-serif": "^5.2.8",
+    "@fontsource-variable/outfit": "^5.2.8",
+    "@fontsource-variable/oxanium": "^5.2.8",
     "@iconify-json/lucide": "^1.2.105",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.1.0",

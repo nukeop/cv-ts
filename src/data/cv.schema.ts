@@ -6,6 +6,7 @@ export type CvData = {
   title: string;
   contact: ContactItem[];
   summary: string;
+  experienceYears?: string;
   experience: Job[];
   education: Education[];
   projects: Project[];
@@ -26,7 +27,7 @@ export type Job = {
   url?: string;
   start: string;
   end?: string | null;
-  mark: string;
+  promotedFrom?: string;
   description?: string;
   highlights?: string[];
 };

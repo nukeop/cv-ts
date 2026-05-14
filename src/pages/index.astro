@@ -15,9 +15,9 @@ const pageTitle = `Curriculum Vitae — ${cv.name.first} ${cv.name.last}`;
 ---
 
 <CV title={pageTitle} cv={cv}>
-  <div class="min-h-screen px-6 py-8 pb-24 flex justify-center print:p-0 print:min-h-0">
+  <div class="min-h-screen bg-bg px-6 py-8 pb-24 flex justify-center print:p-0 print:min-h-0">
     <article
-      class="w-full max-w-[820px] bg-paper px-[72px] py-16 border-[0.5px] border-rule-soft rounded-[2px] shadow-page print:shadow-none print:border-0 print:rounded-none print:max-w-none print:w-full print:p-0"
+      class="w-full max-w-[820px] bg-paper px-[72px] py-16 border border-rule rounded-none shadow-page print:shadow-none print:border-0 print:max-w-none print:w-full print:p-0"
       itemscope
       itemtype="https://schema.org/Person"
     >
@@ -27,7 +27,7 @@ const pageTitle = `Curriculum Vitae — ${cv.name.first} ${cv.name.last}`;
         <Summary text={cv.summary} />
       </Section>
 
-      <Section num="02" title="Experience">
+      <Section num="02" title="Experience" annotation={cv.experienceYears}>
         <Experience jobs={cv.experience} />
       </Section>
 

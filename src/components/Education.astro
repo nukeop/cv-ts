@@ -17,16 +17,16 @@ const { entries } = Astro.props;
         itemscope
         itemtype="https://schema.org/EducationalOrganization"
       >
-        <div class="font-mono text-[12.5px] text-ink-mute pt-0.5">
+        <div class="font-display text-[12px] text-ink-mute pt-0.5 tracking-[0.04em]">
           <time datetime={e.start}>{e.start}</time>
           {" — "}
           <time datetime={e.end}>{e.end}</time>
         </div>
         <div>
-          <h3 class="font-sans text-[17px] font-semibold text-ink m-0 mb-0.5 leading-[1.25]" itemprop="description">
+          <h3 class="font-display text-[16px] font-bold text-ink m-0 mb-0.5 leading-[1.25] tracking-[0.01em]" itemprop="description">
             {e.degree}
           </h3>
-          <div class="text-[12.5px] text-ink-soft" itemprop="name">{e.uni}</div>
+          <div class="font-sans text-[12.5px] text-ink-soft" itemprop="name">{e.uni}</div>
           {e.note && (
             <p class="mt-2 text-ink-soft max-w-[62ch] text-pretty text-[14.5px]">{e.note}</p>
           )}

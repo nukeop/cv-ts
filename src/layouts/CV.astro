@@ -1,8 +1,4 @@
 ---
-import "@fontsource/instrument-serif/400.css";
-import "@fontsource/instrument-serif/400-italic.css";
-import "@fontsource-variable/manrope";
-import "@fontsource-variable/jetbrains-mono";
 import "../styles/global.css";
 import type { CvData } from "../data/cv.schema";
 
@@ -56,7 +52,6 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="profile" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={cv.summary} />
@@ -64,10 +59,9 @@ const jsonLd = {
     <meta property="og:profile:last_name" content={cv.name.last} />
     {site && <meta property="og:url" content={site} />}
 
-    <!-- JSON-LD structured data -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd, null, 2)} />
   </head>
-  <body class="bg-bg text-ink font-sans text-[15px] leading-[1.55] m-0 print:bg-white">
+  <body class="bg-bg text-ink font-sans text-[15px] leading-[1.55] m-0 print:bg-bg">
     <slot />
   </body>
 </html>

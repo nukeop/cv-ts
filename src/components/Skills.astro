@@ -16,12 +16,12 @@ const { rows } = Astro.props;
   {
     rows.map((r) => (
       <div class="grid grid-cols-[110px_1fr] gap-6 items-baseline break-inside-avoid">
-        <div class="font-mono text-[12.5px] text-ink-mute lowercase tracking-[0.02em]">{r.cat}</div>
+        <div class="font-display text-[11px] text-accent uppercase tracking-[0.08em] font-bold">{r.cat}</div>
         <div class="text-ink text-[14.5px] leading-[1.55] text-pretty">
           {r.items.map((it, i) => (
             <>
               {i > 0 && (
-                <span class="text-ink-mute mx-2 font-mono opacity-50" aria-hidden="true">
+                <span class="text-ink-mute mx-2 font-display opacity-50" aria-hidden="true">
                   /
                 </span>
               )}
