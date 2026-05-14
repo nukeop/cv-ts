@@ -25,6 +25,7 @@ export type Job = {
   company: string;
   role: string;
   url?: string;
+  logo?: string;
   start: string;
   end?: string | null;
   promotedFrom?: string;

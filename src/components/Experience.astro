@@ -39,35 +39,45 @@ const { jobs } = Astro.props;
           </div>
         </div>
         <div class="min-w-0">
-          <h3 class="font-display text-[16px] font-bold text-ink m-0 leading-[1.2] tracking-[0.01em]">
-            {j.role}
-          </h3>
-          {j.promotedFrom && (
-            <div class="flex items-center gap-1 mt-0.5 mb-0.5">
-              <Icon name="lucide:arrow-up" class="w-[11px] h-[11px] text-accent shrink-0" />
-              <span class="font-display text-[11px] text-accent tracking-[0.04em]">
-                Promoted from {j.promotedFrom}
-              </span>
-            </div>
-          )}
-          <div class="font-sans text-[12.5px] text-ink-soft tracking-[0.005em]">
-            {j.url ? (
-              <a
-                href={j.url}
-                target="_blank"
-                rel="noreferrer"
-                class="text-ink-soft hover:text-accent transition-colors"
-                itemprop="name"
-              >
-                {j.company}
-                <span class="inline-block font-display ml-0.5 opacity-55 -translate-y-px">
-                  {" ↗"}
-                </span>
-              </a>
-            ) : (
-              <span itemprop="name">{j.company}</span>
+          <div class="flex items-center gap-3">
+            {j.logo && (
+              <img
+                src={j.logo}
+                alt=""
+                class="w-[32px] h-[32px] object-contain shrink-0"
+                itemprop="logo"
+              />
             )}
+            <h3 class="font-display text-[16px] font-bold text-ink m-0 leading-[1.2] tracking-[0.01em]">
+              {j.role}
+            </h3>
           </div>
+            {j.promotedFrom && (
+              <div class="flex items-center gap-1 mt-0.5 mb-0.5">
+                <Icon name="lucide:arrow-up" class="w-[11px] h-[11px] text-accent shrink-0" />
+                <span class="font-display text-[11px] text-accent tracking-[0.04em]">
+                  Promoted from {j.promotedFrom}
+                </span>
+              </div>
+            )}
+            <div class="font-sans text-[12.5px] text-ink-soft tracking-[0.005em]">
+              {j.url ? (
+                <a
+                  href={j.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-ink-soft hover:text-accent transition-colors"
+                  itemprop="name"
+                >
+                  {j.company}
+                  <span class="inline-block font-display ml-0.5 opacity-55 -translate-y-px">
+                    {" ↗"}
+                  </span>
+                </a>
+              ) : (
+                <span itemprop="name">{j.company}</span>
+              )}
+            </div>
           {j.description && (
             <p class="mt-2 mb-2 text-ink-soft max-w-[62ch] text-pretty" itemprop="description">
               {j.description}
