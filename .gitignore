@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 src/data/cv.yaml
 .design/
+public
