@@ -33,19 +33,19 @@ const contactItemprop: Record<string, string> = {
 
 <header class="mb-11 break-inside-avoid break-after-avoid">
   <h1
-    class="font-display font-bold text-[clamp(54px,7.2vw,76px)] leading-[0.95] tracking-[-0.02em] m-0 mb-1 text-ink uppercase"
+    class="font-display font-bold text-[clamp(42px,5.8vw,60px)] leading-[0.95] tracking-[-0.02em] m-0 mb-1 text-ink uppercase"
     itemprop="name"
   >
     <span itemprop="givenName">{first}</span>{" "}<em class="not-italic text-accent" itemprop="familyName">{last}</em>
   </h1>
   <p
-    class="font-display font-normal text-[15px] tracking-[0.08em] text-ink-soft mt-3 mb-6 uppercase"
+    class="font-display font-normal text-[18px] tracking-[0.08em] text-ink-soft mt-3 mb-6 uppercase"
     itemprop="jobTitle"
   >
     {data.title}
   </p>
   <address
-    class="flex flex-wrap items-center gap-x-5 gap-y-1 font-display text-[12px] text-ink-soft pt-[18px] border-t-2 border-rule not-italic"
+    class="flex items-stretch font-display text-[13px] text-ink not-italic border-t-2 border-b-2 border-rule"
   >
     {
       data.contact.map((c, i) => {
@@ -55,15 +55,13 @@ const contactItemprop: Record<string, string> = {
           <>
             {i > 0 && (
               <span
-                class="inline-block text-ink-mute opacity-40 select-none"
+                class="w-px bg-rule shrink-0"
                 aria-hidden="true"
-              >
-                |
-              </span>
+              />
             )}
-            <span class="inline-flex items-center gap-1.5">
+            <span class="flex-1 inline-flex items-center justify-center gap-2 py-3">
               {iconName ? (
-                <Icon name={iconName} class="w-[13px] h-[13px] text-accent shrink-0" />
+                <Icon name={iconName} class="w-[15px] h-[15px] text-accent shrink-0" />
               ) : (
                 <span class="text-ink-mute lowercase">{c.label}</span>
               )}
